@@ -3,10 +3,6 @@
   import copied from "../assets/icons/file-document-check-outline.svg";
   import { contents } from "./stores.js";
 
-  export let id: string;
-  export let src: string;
-  export let alt: string;
-  export let spanText: string;
   let isCopied: boolean = false;
   let lastClicked: Date;
 
@@ -20,25 +16,19 @@
     }
 
     isCopied = true;
-    src = copied;
-    alt = "Copied Text";
-    spanText = "Copied!";
     lastClicked = new Date();
 
     setTimeout(() => {
       if (new Date().getTime() - lastClicked.getTime() > timeoutLimit) {
         isCopied = false;
-        src = copy;
-        alt = "Copy Text";
-        spanText = "Copy";
       }
     }, timeoutLimit);
   }
 </script>
 
-<button {id} on:click={copyText} class:copied={isCopied}>
-  <img {src} {alt} />
-  <span>{spanText}</span>
+<button on:click={copyText} class:copied={isCopied}>
+  <img src={isCopied ? copied : copy} alt={isCopied ? "Copied Text" : "Copy Text"} />
+  <span>{isCopied ? "Copied!" : "Copy"}</span>
 </button>
 
 <style>

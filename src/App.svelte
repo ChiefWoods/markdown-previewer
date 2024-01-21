@@ -1,9 +1,7 @@
 <script lang="ts">
   import markdown from "./assets/icons/language-markdown.svg";
   import fileCode from "./assets/icons/file-code-outline.svg";
-  import copy from "./assets/icons/content-copy.svg";
   import fileEye from "./assets/icons/file-eye-outline.svg";
-  import download from "./assets/icons/download-outline.svg";
   import Section from "./lib/Section.svelte";
   import SectionHeader from "./lib/SectionHeader.svelte";
   import CopyBtn from "./lib/CopyBtn.svelte";
@@ -26,13 +24,7 @@
         alt="Edit File"
         heading="Editor"
       />
-      <CopyBtn
-        slot="action-btn"
-        id="copy"
-        src={copy}
-        alt="Copy Text"
-        spanText="Copy"
-      />
+      <CopyBtn slot="action-btn" />
       <Editor slot="text-container" />
     </Section>
     <Section>
@@ -42,13 +34,7 @@
         alt="Preview File"
         heading="Preview"
       />
-      <DownloadBtn
-        slot="action-btn"
-        id="download"
-        src={download}
-        alt="Download File"
-        spanText="Download"
-      />
+      <DownloadBtn slot="action-btn" />
       <Preview slot="text-container" />
     </Section>
   </div>
@@ -59,9 +45,10 @@
   @import url("https://fonts.googleapis.com/css2?family=Changa&display=swap");
 
   :root {
-    --green-mist: #ccd5ae;
-    --chrome-white: #e9edc9;
-    --off-yellow: #fefae0;
+    --primary: #e9edc9;
+    --secondary: #ccd5ae;
+    --accent: #fefae0;
+    --text-container-scrollbar: #b5bd99;
   }
 
   main {
@@ -70,7 +57,7 @@
     flex-direction: column;
     gap: 40px;
     padding: 40px;
-    background: var(--chrome-white);
+    background: var(--primary);
   }
 
   #title {
@@ -93,5 +80,13 @@
     display: flex;
     gap: 40px;
     flex: 1;
+    max-height: 350px;
+  }
+
+  @media (max-width: 1000px) {
+    #container {
+      flex-direction: column;
+      max-height: initial;
+    }
   }
 </style>

@@ -15,7 +15,6 @@
 
   #editor {
     resize: none;
-    border: none;
     outline: none;
     font-family: "Roboto Mono", monospace;
     font-size: 1.5rem;

@@ -17,8 +17,16 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: var(--green-mist);
+    background: var(--secondary);
     border-radius: 6px 6px 0 0;
     padding: 5px 10px;
+  }
+
+  @media (max-width: 1000px) {
+    section {
+      flex: initial;
+      height: 40vh;
+      min-height: 250px;
+    }
   }
 </style>

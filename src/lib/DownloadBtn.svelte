@@ -1,10 +1,6 @@
 <script lang="ts">
+  import download from "../assets/icons/download-outline.svg";
   import { contents } from "./stores.js";
-
-  export let id: string;
-  export let src: string;
-  export let alt: string;
-  export let spanText: string;
 
   function downloadFile() {
     const blob = new Blob([$contents], { type: "text/markdown" });
@@ -20,9 +16,9 @@
   }
 </script>
 
-<button {id} on:click={downloadFile}>
-  <img {src} {alt} />
-  <span>{spanText}</span>
+<button on:click={downloadFile}>
+  <img src={download} alt="Download File" />
+  <span>Download</span>
 </button>
 
 <style>

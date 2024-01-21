@@ -7,9 +7,11 @@ const defaultContext = `# This is a heading
 ##### Much...
 ###### Smaller
 
+---
+
 This is some normal text
 **Here's how to bold it**
-_And here's how to make it italic_
+_Here's how to make it italic_
 ***And here's how to do both***
 
 > This is a blockquote
@@ -43,4 +45,3 @@ This is a [link](https://github.com/ChiefWoods/markdown-previewer)
 
 export let contents = writable(defaultContext);
 export let isCopied = writable(false);
-

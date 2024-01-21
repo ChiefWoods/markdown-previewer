@@ -1,6 +1,23 @@
 .text-container {
-  background: var(--off-yellow);
+  background: var(--accent);
   width: 100%;
-  height: 100%;
+  flex: 1;
   padding: 10px;
+  overflow-y: scroll;
+  border: 3px solid var(--secondary);
+}
+
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: var(--accent);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--text-container-scrollbar)
 }

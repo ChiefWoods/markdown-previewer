@@ -19,7 +19,9 @@
   });
 </script>
 
-<div id="preview" class="text-container">{@html marked.parse($contents)}</div>
+<div id="preview" class="text-container">
+  {@html marked.parse($contents)}
+</div>
 
 <style>
   @import "./TextContainer.css";
@@ -53,18 +55,18 @@
   }
 
   :global(#preview p) {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   :global(#preview blockquote) {
-    font-size: 1.75rem;
-    border-left: 10px solid var(--green-mist);
+    font-size: 1.5rem;
+    border-left: 10px solid var(--secondary);
     padding: 10px;
-    background: var(--chrome-white);
+    background: var(--primary);
   }
 
   :global(#preview ol, #preview ul) {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     margin-left: 20px;
   }
 
@@ -73,8 +75,8 @@
   }
 
   :global(#preview pre) {
-    font-size: 1.75rem;
-    background: var(--green-mist);
+    font-size: 1.5rem;
+    background: var(--secondary);
     padding: 10px;
     border-radius: 6px;
   }
