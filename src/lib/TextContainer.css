@@ -1,3 +1,7 @@
+:root {
+  --scrollbar-thickness: 5px;
+}
+
 .text-container {
   background: var(--accent);
   width: 100%;
@@ -5,19 +9,37 @@
   padding: 10px;
   overflow-y: scroll;
   border: 3px solid var(--secondary);
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-container-scrollbar-thumb) var(--accent);
 }
 
 *::-webkit-scrollbar {
-  height: 10px;
-  width: 10px;
+  height: var(--scrollbar-thickness);
+  width: var(--scrollbar-thickness);
 }
 
 *::-webkit-scrollbar-track {
-  border-radius: 5px;
+  border-radius: var(--scrollbar-thickness);
   background-color: var(--accent);
 }
 
+*::-webkit-scrollbar-track:hover {
+  background-color: var(--text-container-scrollbar-track-hover);
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: var(--text-container-scrollbar-track-hover);
+}
+
 *::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: var(--text-container-scrollbar)
+  border-radius: var(--scrollbar-thickness);
+  background-color: var(--text-container-scrollbar-thumb);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-container-scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--text-container-scrollbar-thumb-active);
 }

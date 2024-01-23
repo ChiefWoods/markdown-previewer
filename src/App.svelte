@@ -9,6 +9,44 @@
   import DownloadBtn from "./lib/DownloadBtn.svelte";
   import Preview from "./lib/Preview.svelte";
   import Footer from "./lib/Footer.svelte";
+  import { onMount } from "svelte";
+
+  const scrollableElements: HTMLElement[] = [];
+
+  function syncScroll(scrolledEle: HTMLElement, otherEle: HTMLElement) {
+    const scrollTopPercent =
+      scrolledEle.scrollTop /
+      (scrolledEle.scrollHeight - scrolledEle.clientHeight);
+    const top =
+      scrollTopPercent * (otherEle.scrollHeight - otherEle.clientHeight);
+
+    otherEle.scrollTop = top;
+  }
+
+  function handleScroll(e: Event) {
+    const scrolledEle = e.target as HTMLElement;
+    scrollableElements
+      .filter((ele) => ele !== scrolledEle)
+      .forEach((ele) => {
+        ele.removeEventListener("scroll", handleScroll);
+        syncScroll(scrolledEle, ele);
+        window.requestAnimationFrame(() => {
+          ele.addEventListener("scroll", handleScroll);
+        });
+      });
+  }
+
+  onMount(() => {
+    scrollableElements.push(
+      ...(Array.from(
+        document.querySelectorAll(".text-container")
+      ) as HTMLElement[])
+    );
+
+    scrollableElements.forEach((ele) => {
+      ele.addEventListener("scroll", handleScroll);
+    });
+  });
 </script>
 
 <main>
@@ -48,7 +86,10 @@
     --primary: #e9edc9;
     --secondary: #ccd5ae;
     --accent: #fefae0;
-    --text-container-scrollbar: #b5bd99;
+    --text-container-scrollbar-track-hover: #efebd2;
+    --text-container-scrollbar-thumb: #b5bd99;
+    --text-container-scrollbar-thumb-hover: #969c7f;
+    --text-container-scrollbar-thumb-active: #7d8266;
   }
 
   main {

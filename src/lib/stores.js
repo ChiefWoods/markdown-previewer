@@ -13,6 +13,7 @@ This is some normal text
 **Here's how to bold it**
 _Here's how to make it italic_
 ***And here's how to do both***
+~~Or strikethrough~~
 
 > This is a blockquote
 > > And here's how you nest it
