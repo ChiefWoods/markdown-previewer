@@ -45,4 +45,3 @@ This is a [link](https://github.com/ChiefWoods/markdown-previewer)
 `;
 
 export let contents = writable(defaultContext);
-export let isCopied = writable(false);
