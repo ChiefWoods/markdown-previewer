@@ -22,11 +22,3 @@ img {
   width: 20px;
   aspect-ratio: 1/1;
 }
-
-.copied {
-  background: #9ade7b;
-}
-
-.copied:hover {
-  background: #7fcb5b;
-}

@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-const defaultContext = `# This is a heading
+export const defaultContent = `# This is a heading
 ## It can get smaller with more \\#
 ### And even smaller
 #### And much...
@@ -44,4 +44,5 @@ This is a [link](https://github.com/ChiefWoods/markdown-previewer)
 ![This is an image](https://avatars.githubusercontent.com/u/73902027?v=4)
 `;
 
-export let contents = writable(defaultContext);
+export let contents = writable("");
+export let editorHeight = writable(0);

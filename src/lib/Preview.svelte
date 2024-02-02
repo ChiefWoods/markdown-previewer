@@ -2,6 +2,8 @@
   import { marked } from "marked";
   import { contents } from "./stores.js";
 
+  export let preview;
+
   const customRenderer = new marked.Renderer();
 
   customRenderer.paragraph = (text: string) => {
@@ -19,7 +21,7 @@
   });
 </script>
 
-<div id="preview" class="text-container">
+<div id="preview" class="text-container" bind:this={preview}>
   {@html marked.parse($contents)}
 </div>
 

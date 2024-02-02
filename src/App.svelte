@@ -10,8 +10,12 @@
   import Preview from "./lib/Preview.svelte";
   import Footer from "./lib/Footer.svelte";
   import { onMount } from "svelte";
+  import { contents, defaultContent } from "./lib/stores";
 
-  const scrollableElements: HTMLElement[] = [];
+  let scrollableElements: HTMLElement[] = [];
+  let container: HTMLElement;
+  let editor: HTMLTextAreaElement;
+  let preview: HTMLDivElement;
 
   function syncScroll(scrolledEle: HTMLElement, otherEle: HTMLElement) {
     const scrollTopPercent =
@@ -37,15 +41,16 @@
   }
 
   onMount(() => {
-    scrollableElements.push(
-      ...(Array.from(
-        document.querySelectorAll(".text-container")
-      ) as HTMLElement[])
-    );
+    scrollableElements.push(editor, preview);
 
     scrollableElements.forEach((ele) => {
       ele.addEventListener("scroll", handleScroll);
     });
+
+    container.style.maxHeight =
+      window.innerWidth > 1000 ? `${container.clientHeight - 1}px` : "300px";
+
+    $contents = defaultContent;
   });
 </script>
 
@@ -54,7 +59,7 @@
     <img src={markdown} alt="Markdown" />
     <h1>Markdown Previewer</h1>
   </div>
-  <div id="container">
+  <div id="container" bind:this={container}>
     <Section>
       <SectionHeader
         slot="section-header"
@@ -63,7 +68,7 @@
         heading="Editor"
       />
       <CopyBtn slot="action-btn" />
-      <Editor slot="text-container" />
+      <Editor slot="text-container" bind:editor />
     </Section>
     <Section>
       <SectionHeader
@@ -73,7 +78,7 @@
         heading="Preview"
       />
       <DownloadBtn slot="action-btn" />
-      <Preview slot="text-container" />
+      <Preview slot="text-container" bind:preview />
     </Section>
   </div>
 </main>
@@ -121,13 +126,12 @@
     display: flex;
     gap: 40px;
     flex: 1;
-    max-height: 350px;
   }
 
   @media (max-width: 1000px) {
     #container {
       flex-direction: column;
-      max-height: initial;
+      max-height: initial !important;
     }
   }
 </style>

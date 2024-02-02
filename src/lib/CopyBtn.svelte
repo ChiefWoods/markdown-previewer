@@ -27,10 +27,21 @@
 </script>
 
 <button on:click={copyText} class:copied={isCopied}>
-  <img src={isCopied ? copied : copy} alt={isCopied ? "Copied Text" : "Copy Text"} />
+  <img
+    src={isCopied ? copied : copy}
+    alt={isCopied ? "Copied Text" : "Copy Text"}
+  />
   <span>{isCopied ? "Copied!" : "Copy"}</span>
 </button>
 
 <style>
   @import "./ActionBtn.css";
+
+  .copied {
+    background: #9ade7b;
+  }
+
+  .copied:hover {
+    background: #7fcb5b;
+  }
 </style>

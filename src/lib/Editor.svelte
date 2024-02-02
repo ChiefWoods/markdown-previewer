@@ -1,5 +1,7 @@
 <script lang="ts">
   import { contents } from "./stores.js";
+
+  export let editor;
 </script>
 
 <textarea
@@ -7,6 +9,7 @@
   class="text-container"
   placeholder="Type something here..."
   bind:value={$contents}
+  bind:this={editor}
 ></textarea>
 
 <style>
