@@ -1,9 +1,28 @@
+<script lang="ts">
+  import type { Snippet } from "svelte";
+
+  let {
+    src,
+    alt,
+    heading,
+    btn,
+    textContainer,
+  }: {
+    src: string;
+    alt: string;
+    heading: string;
+    btn: Snippet;
+    textContainer: Snippet;
+  } = $props();
+</script>
+
 <section>
   <div>
-    <slot name="section-header" />
-    <slot name="action-btn" />
+    <img {src} {alt} />
+    <h2>{heading}</h2>
+    {@render btn()}
   </div>
-  <slot name="text-container" />
+  {@render textContainer()}
 </section>
 
 <style>
@@ -22,11 +41,28 @@
     padding: 5px 10px;
   }
 
-  @media (max-width: 1000px) {
+  img {
+    width: 25px;
+    aspect-ratio: 1/1;
+  }
+
+  h2 {
+    font-family: "Changa", sans-serif;
+    font-size: 2.3rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1024px) {
     section {
       flex: initial;
       height: 40vh;
       min-height: 250px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    h2 {
+      display: none;
     }
   }
 </style>
